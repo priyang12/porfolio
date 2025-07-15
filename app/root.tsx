@@ -9,6 +9,8 @@ import {
 
 import type { Route } from "./+types/root";
 import Navbar from "./Components/Navbar/Navbar";
+import "@priyang/react-component-lib/dist/global.css";
+import "@priyang/react-component-lib/dist/index.css";
 import "./app.css";
 
 export const links: Route.LinksFunction = () => [
