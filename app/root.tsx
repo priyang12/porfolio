@@ -8,6 +8,7 @@ import {
 } from "react-router";
 
 import type { Route } from "./+types/root";
+import Navbar from "./Components/Navbar/Navbar";
 import "./app.css";
 
 export const links: Route.LinksFunction = () => [
@@ -29,10 +30,30 @@ export function Layout({ children }: { children: React.ReactNode }) {
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+        <title>Welcome</title>
+        <meta name="title" content="Welcome to WebHub" />
+        <meta name="description" content="This is my Personal portfolio." />
+        <meta property="og:type" content="website" />
+        <meta property="og:title" content="Welcome to WebHub" />
+        <meta
+          property="og:description"
+          content="This is my Personal portfolio."
+        />
+        <meta property="og:image" content="" />
+
+        <meta property="twitter:card" content="summary_large_image" />
+        <meta property="twitter:title" content="Welcome to WebHub" />
+        <meta
+          property="twitter:description"
+          content="This is my Personal portfolio."
+        />
+        <meta property="twitter:image" content=""></meta>
         <Meta />
         <Links />
       </head>
       <body>
+        <Navbar />
         {children}
         <ScrollRestoration />
         <Scripts />
