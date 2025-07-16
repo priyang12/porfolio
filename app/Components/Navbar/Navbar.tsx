@@ -21,7 +21,7 @@ function Navbar() {
       className={clsx(
         `glass-container h=[20vh] left-0 z-20 grid w-full grid-cols-12 flex-wrap items-center gap-5 rounded-b-md py-5 sm:sticky sm:top-0`,
         {
-          'absolute bottom-0 sm:hidden': pathname === '/',
+          'fixed bottom-0 sm:hidden': pathname === '/',
         },
       )}
     >

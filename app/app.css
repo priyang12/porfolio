@@ -5,11 +5,6 @@
 
 :root {
   /* override lib styles. */
-  --text-primary: #f8fafc;
-  --text-secondary: #94a3b8;
-  --text-tertiary: #64748b;
-  --text-inverse: #0f172a;
-  --text-link: #7dd3fc;
 
   --error-color: #ef4444;
   --success-color: #10b981;
@@ -47,6 +42,41 @@
   --neutral-800: #1e293b;
   --neutral-900: #0f172a;
 
+  --bg-default: #ffffff;
+  --bg-surface: #f8fafc;
+  --bg-contrast: #0f172a;
+}
+
+/* dark theme */
+/* still need to work on */
+[data-theme='dark'] {
+  /* --primary-50: #134e4a;
+  --primary-100: #115e59;
+  --primary-200: #0f766e;
+  --primary-300: #0d9488;
+  --primary-400: #14b8a6;
+  --primary-500: #2dd4bf;
+  --primary-600: #5eead4;
+  --primary-700: #99f6e4;
+  --primary-800: #ccfbf1;
+  --primary-900: #f0fdfa; */
+
+  /* --neutral-50: #0f172a;
+  --neutral-100: #1e293b;
+  --neutral-200: #334155;
+  --neutral-300: #475569;
+  --neutral-400: #64748b;
+  --neutral-500: #94a3b8;
+  --neutral-600: #cbd5e1;
+  --neutral-700: #e2e8f0;
+  --neutral-800: #f1f5f9;
+  --neutral-900: #f8fafc;
+
+  --accent-400: #d8b4fe;
+  --accent-500: #c084fc;
+  --accent-600: #a78bfa; */
+
+  /* Dark backgrounds */
   --bg-default: #0f172a;
   --bg-surface: #1e293b;
   --bg-contrast: #f8fafc;
