@@ -1,5 +1,5 @@
-import { Link } from "react-router";
-import { clsx } from "clsx";
+import { Link, useLocation } from 'react-router';
+import { clsx } from 'clsx';
 
 function LogoComponent() {
   return (
@@ -15,13 +15,17 @@ function LogoComponent() {
 }
 
 function Navbar() {
+  const { pathname } = useLocation();
   return (
     <div
       className={clsx(
-        `glass-container h=[20vh] sticky top-0 left-0 z-20 grid grid-cols-12 flex-wrap items-center gap-5 rounded-b-md py-5`,
+        `glass-container h=[20vh] left-0 z-20 grid w-full grid-cols-12 flex-wrap items-center gap-5 rounded-b-md py-5 sm:sticky sm:top-0`,
+        {
+          'absolute bottom-0 sm:hidden': pathname === '/',
+        },
       )}
     >
-      <LogoComponent />
+      {pathname === '/' ? null : <LogoComponent />}
 
       <ul className="col-span-12 grid grid-cols-3 grid-rows-subgrid items-center md:col-start-7 md:col-end-12">
         <li className="col-span-1 m-auto">

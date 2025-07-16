@@ -29,27 +29,37 @@ export function meta({}: Route.MetaArgs) {
 // +-------------------+ +------------------+ +------------------+
 
 const HeroContainer = () => {
-  const sd = { ads: 'asdasd' };
   return (
-    <section className="col-start-2 col-end-12 flex min-h-[80vh] items-center">
-      <div className="mx-auto text-center">
+    <section className="col-start-2 col-end-12 flex min-h-[100vh] items-center">
+      <div className="mx-auto mb-[50%] text-center sm:mb-0">
         <header className="font-VT323">
           <h1 className="text-primary text-5xl sm:text-7xl">{Title}</h1>
           <h2 className="text-primary my-4 text-3xl sm:text-5xl">
             {Subtitle} 👋
           </h2>
-          <p className="text-primary mt-4 text-xl sm:text-3xl">{Description}</p>
+          <p className="text-primary m-auto mt-4 w-[80%] text-xl sm:text-3xl">
+            {Description}
+          </p>
         </header>
 
         {/* Links */}
-        <ButtonGroup className="mt-8 justify-center border-0">
-          <Link to={'/Projects'} className="Button Button-info-border">
+        <ButtonGroup className="mt-8 hidden justify-center border-0 sm:flex">
+          <Link
+            to={'/Projects'}
+            className="Button Button-primary w-[26%] bg-[var(--primary-800)]"
+          >
             <>View Projects</>
           </Link>
-          <Link to={'/Blogs'} className="Button Button-info-border">
+          <Link
+            to={'/Blogs'}
+            className="Button Button-primary w-[26%] bg-[var(--primary-800)]"
+          >
             Read Blogs
           </Link>
-          <Link to={'/About'} className="Button Button-info-border">
+          <Link
+            to={'/About'}
+            className="Button Button-primary w-[26%] bg-[var(--primary-800)]"
+          >
             About Me
           </Link>
         </ButtonGroup>
