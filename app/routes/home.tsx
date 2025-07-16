@@ -1,14 +1,14 @@
-import type { Route } from "./+types/home";
-import { Description, Subtitle, Title } from "../../content/Hero.json";
-import { Github, Twitter } from "../../content/Socials.json";
-import { FiGithub, FiTwitter } from "react-icons/fi";
-import { ButtonGroup, TextLink } from "@priyang/react-component-lib";
-import { Link } from "react-router";
+import type { Route } from './+types/home';
+import { Description, Subtitle, Title } from '../../content/Hero.json';
+import { Github, Twitter } from '../../content/Socials.json';
+import { FiGithub, FiTwitter } from 'react-icons/fi';
+import { ButtonGroup, TextLink } from '@priyang/react-component-lib';
+import { Link } from 'react-router';
 
 export function meta({}: Route.MetaArgs) {
   return [
-    { title: "Home/" },
-    { name: "description", content: "This is my Personal portfolio" },
+    { title: 'Home/' },
+    { name: 'description', content: 'This is my Personal portfolio' },
   ];
 }
 
@@ -29,41 +29,42 @@ export function meta({}: Route.MetaArgs) {
 // +-------------------+ +------------------+ +------------------+
 
 const HeroContainer = () => {
+  const sd = { ads: 'asdasd' };
   return (
-    <section className="col-start-2 col-end-12 flex items-center min-h-[80vh]">
+    <section className="col-start-2 col-end-12 flex min-h-[80vh] items-center">
       <div className="mx-auto text-center">
         <header className="font-VT323">
-          <h1 className="text-5xl sm:text-7xl text-primary">{Title}</h1>
-          <h2 className="my-4 text-3xl sm:text-5xl text-primary">
+          <h1 className="text-primary text-5xl sm:text-7xl">{Title}</h1>
+          <h2 className="text-primary my-4 text-3xl sm:text-5xl">
             {Subtitle} 👋
           </h2>
-          <p className="mt-4 text-xl sm:text-3xl text-primary">{Description}</p>
+          <p className="text-primary mt-4 text-xl sm:text-3xl">{Description}</p>
         </header>
 
         {/* Links */}
         <ButtonGroup className="mt-8 justify-center border-0">
-          <Link to={"/Projects"} className="Button Button-info-border">
+          <Link to={'/Projects'} className="Button Button-info-border">
             <>View Projects</>
           </Link>
-          <Link to={"/Blogs"} className="Button Button-info-border">
+          <Link to={'/Blogs'} className="Button Button-info-border">
             Read Blogs
           </Link>
-          <Link to={"/About"} className="Button Button-info-border">
+          <Link to={'/About'} className="Button Button-info-border">
             About Me
           </Link>
         </ButtonGroup>
         {/* Socials */}
         <div className="mt-8">
           <h3>Find Me!</h3>
-          <div className="flex items-center gap-4 justify-center font-Roboto">
+          <div className="font-Roboto flex items-center justify-center gap-4">
             <TextLink href={Github}>
-              <div className="flex items-center cursor-pointer gap-2 px-4 py-2 border rounded  hover:text-white transition">
+              <div className="flex cursor-pointer items-center gap-2 rounded border px-4 py-2 transition hover:text-white">
                 <FiGithub className="text-xl" />
                 Github
               </div>
             </TextLink>
             <TextLink href={Twitter}>
-              <div className="flex items-center cursor-pointer gap-2 px-4 py-2 border rounded hover:bg-primary hover:text-white transition">
+              <div className="hover:bg-primary flex cursor-pointer items-center gap-2 rounded border px-4 py-2 transition hover:text-white">
                 <FiTwitter className="text-xl" />
                 Twitter
               </div>
@@ -77,7 +78,7 @@ const HeroContainer = () => {
 
 export default function Home() {
   return (
-    <div className="h-[80vh] gap-5 grid grid-cols-12">
+    <div className="grid h-[80vh] grid-cols-12 gap-5">
       <HeroContainer />
     </div>
   );
