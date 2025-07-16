@@ -41,13 +41,7 @@ const HeroContainer = () => {
         </header>
 
         {/* Links */}
-        <ButtonGroup
-          className="mt-8 justify-center"
-          style={{
-            // need to fix overriding
-            border: 0,
-          }}
-        >
+        <ButtonGroup className="mt-8 justify-center border-0">
           <Link to={"/Projects"} className="Button Button-info-border">
             <>View Projects</>
           </Link>
