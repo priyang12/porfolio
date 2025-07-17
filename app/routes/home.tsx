@@ -64,19 +64,19 @@ function HeroContainer() {
         {/* Links */}
         <ButtonGroup className="mt-8 hidden justify-center border-0 sm:flex">
           <Link
-            to={'/Projects'}
+            to={'/projects'}
             className="Button Button-primary w-[26%] bg-[var(--primary-800)]"
           >
             <>View Projects</>
           </Link>
           <Link
-            to={'/Blogs'}
+            to={'/blogs'}
             className="Button Button-primary w-[26%] bg-[var(--primary-800)]"
           >
             Read Blogs
           </Link>
           <Link
-            to={'/About'}
+            to={'/about'}
             className="Button Button-primary w-[26%] bg-[var(--primary-800)]"
           >
             About Me

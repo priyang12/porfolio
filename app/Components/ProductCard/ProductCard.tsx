@@ -1,4 +1,4 @@
-import { Link } from 'react-router';
+import { Link, useNavigate } from 'react-router';
 import { FiExternalLink, FiGithub } from 'react-icons/fi';
 import { Truncate } from '@priyang/react-component-lib';
 
@@ -18,6 +18,7 @@ const ProjectCard = ({
   Project: projectProps;
   Filename: string;
 }) => {
+  const navigate = useNavigate();
   const { Title, Description, TechName, ProjectLink, GithubLink, Image } =
     Project;
 
@@ -26,6 +27,9 @@ const ProjectCard = ({
       <article
         className="glass-container gap-xl col-span-12 flex flex-col p-5 md:flex-row"
         tabIndex={0}
+        onKeyDown={(e) => {
+          if (e.key === 'Enter') navigate(`/projects/${Filename}`);
+        }}
       >
         <div className="card border-secondary bg-base-100 lg:card-side border-2 border-solid shadow-xl md:order-2">
           <Link to={`/projects/${Filename}`} className="h-full">

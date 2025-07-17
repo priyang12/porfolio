@@ -1,9 +1,16 @@
 import { GetProject, GetProjectList } from '~/mdx.server';
 import type { Route } from './+types/Projects';
-import { useLoaderData } from 'react-router';
+import { useLoaderData, type MetaArgs } from 'react-router';
 import { Button } from '@priyang/react-component-lib';
 import ProjectCard from '~/Components/ProductCard/ProductCard';
 import type { projectProps } from '~/Components/ProductCard/ProductCard';
+
+export const meta = ({ data }: MetaArgs<typeof loader>) => {
+  return [
+    { title: '/Projects : ' + data?.Projects.length },
+    { name: 'description', content: data?.Projects.length },
+  ];
+};
 
 export async function loader({ params }: Route.LoaderArgs) {
   const projectList = GetProjectList();
@@ -21,6 +28,7 @@ export async function loader({ params }: Route.LoaderArgs) {
 }
 
 const Projects = () => {
+  // add filter and pagination on client.
   const { Projects } = useLoaderData<typeof loader>();
 
   const scrollToTop = () => {
@@ -40,7 +48,10 @@ const Projects = () => {
           ))}
         </div>
       </main>
-      <div className="sticky top-0 left-0 col-12 mt-5 h-fit">
+      <div
+        className="top-0 left-0 col-1 m-auto h-fit sm:mt-5 md:sticky md:col-12"
+        tabIndex={0}
+      >
         <Button
           variant="info-border"
           className="h-[50px] w-[50px] rounded-full p-1"

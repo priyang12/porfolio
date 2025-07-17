@@ -31,25 +31,25 @@ function Navbar() {
         role="navigation"
         className="col-span-12 grid grid-cols-3 grid-rows-subgrid items-center md:col-start-7 md:col-end-12"
       >
-        {pathname !== '/Projects' ? (
+        {pathname !== '/projects' ? (
           <li className="col-span-1 m-auto">
-            <Link to="/Projects" className="px-1 py-2 text-xl normal-case">
+            <Link to="/projects" className="px-1 py-2 text-xl normal-case">
               Projects
             </Link>
           </li>
         ) : null}
 
-        {pathname !== '/Blogs' ? (
+        {pathname !== '/blogs' ? (
           <li className="col-span-1 m-auto">
-            <Link to="/Blogs" className="px-1 py-2 text-xl normal-case">
+            <Link to="/blogs" className="px-1 py-2 text-xl normal-case">
               Blogs
             </Link>
           </li>
         ) : null}
 
-        {pathname !== '/About' ? (
+        {pathname !== '/about' ? (
           <li className="col-span-1 m-auto">
-            <Link to="/About" className="px-1 py-2 text-xl normal-case">
+            <Link to="/about" className="px-1 py-2 text-xl normal-case">
               About Me
             </Link>
           </li>
