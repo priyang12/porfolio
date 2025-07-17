@@ -6,13 +6,13 @@ import {
   Scripts,
   ScrollRestoration,
 } from 'react-router';
+import { useEffect } from 'react';
 
 import type { Route } from './+types/root';
 import Navbar from './Components/Navbar/Navbar';
 import '@priyang/react-component-lib/dist/global.css';
 import '@priyang/react-component-lib/dist/index.css';
 import './app.css';
-import { useEffect } from 'react';
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
