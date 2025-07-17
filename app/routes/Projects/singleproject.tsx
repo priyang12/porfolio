@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
-import type { Route } from './+types/SingleProject';
+import type { Route } from './+types/singleproject';
 import { redirect, useLoaderData, type MetaArgs } from 'react-router';
 import { getMDXComponent } from 'mdx-bundler/client';
 import { FiExternalLink, FiGithub } from 'react-icons/fi';
-import { GetProject } from '~/mdx.server';
 import { TextLink } from '@priyang/react-component-lib';
+import { GetProject } from '~/Utils/mdx.server';
 
 export type LoaderData = {
   Title: string;

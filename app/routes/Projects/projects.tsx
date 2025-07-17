@@ -1,9 +1,9 @@
-import { GetProject, GetProjectList } from '~/mdx.server';
-import type { Route } from './+types/Projects';
+import type { Route } from './+types/projects';
 import { useLoaderData, type MetaArgs } from 'react-router';
 import { Button } from '@priyang/react-component-lib';
 import ProjectCard from '~/Components/ProductCard/ProductCard';
 import type { projectProps } from '~/Components/ProductCard/ProductCard';
+import { GetProject, GetProjectList } from '~/Utils/mdx.server';
 
 export const meta = ({ data }: MetaArgs<typeof loader>) => {
   return [
@@ -41,7 +41,7 @@ const Projects = () => {
   return (
     <div className="grid min-h-screen grid-cols-1 sm:grid-cols-8 lg:grid-cols-12">
       <main className="col-1 my-5 sm:col-start-2 sm:col-end-11">
-        <h1 className="mb-5 text-4xl">My Projects</h1>
+        <h1 className="font-VT323 mb-5 text-4xl">My Projects</h1>
         <div className="flex flex-col gap-5">
           {Projects.map((item) => (
             <ProjectCard Filename={item.filename} Project={item.Data} />
