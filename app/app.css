@@ -140,3 +140,13 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.125);
   }
 }
+
+.card {
+  @apply overflow-hidden rounded-lg border border-gray-200 shadow-md;
+}
+
+.card-body {
+  @apply p-5;
+  background-color: var(--bg-surface);
+  color: var(--text-primary);
+}
