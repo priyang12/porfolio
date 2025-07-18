@@ -25,6 +25,7 @@ export type blogPage = {
     ImageURL: string;
     socialImageTitle?: string;
     socialImagePreTitle?: string;
+    FileName?: string;
   };
 };
 // fix meta data passing.
@@ -42,7 +43,7 @@ export const loader = async ({}: Route.LoaderArgs) => {
   const Blogs = [];
   for (let blog of blogsFileNames) {
     const { frontmatter } = await GetBlog<blogPage['frontmatter']>(blog);
-    Blogs.push(frontmatter);
+    Blogs.push({ ...frontmatter, FileName: blog });
   }
   return { Blogs, totalBlogs: Blogs.length };
 };

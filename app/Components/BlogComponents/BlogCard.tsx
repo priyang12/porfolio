@@ -16,10 +16,10 @@ function BlogCard({ blogData }: { blogData: blogPage['frontmatter'] }) {
   const goToBlog = (e: React.BaseSyntheticEvent) => {
     if ('key' in e) {
       if (e.key === 'Enter') {
-        navigate(`/blogs/${blogData.title}`);
+        navigate(`/blogs/${blogData.FileName}`);
       }
     } else {
-      navigate(`/blogs/${blogData.title}`);
+      navigate(`/blogs/${blogData.FileName}`);
     }
   };
 
