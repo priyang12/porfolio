@@ -1,6 +1,7 @@
 import ReactMarkdown from 'react-markdown';
 import { Divider } from '@priyang/react-component-lib';
 import Sign from '~/Components/Sign/Sign';
+import VisibilityAnimation from '~/Components/VisibilityAnimation/VisibilityAnimation';
 import aboutJson from '../../content/About.json';
 import { Github } from '../../content/Socials.json';
 
@@ -142,7 +143,9 @@ const AboutMe = () => {
           </a>
         </nav>
         <div className="mt-8 ml-auto hidden w-[20%] md:block">
-          <Sign />
+          <VisibilityAnimation Duration={2000}>
+            {({ inView }) => <Sign Visible={inView} />}
+          </VisibilityAnimation>
         </div>
       </div>
     </section>

@@ -176,3 +176,18 @@ body {
 .tags {
   grid-area: tags;
 }
+
+.sign-animate {
+  animation: dash 2s ease-in-out forwards;
+}
+
+#signature {
+  stroke-dasharray: 1993;
+  stroke-dashoffset: 1993;
+}
+
+@keyframes dash {
+  to {
+    stroke-dashoffset: 0;
+  }
+}

@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 
 function Sign({ Visible = true }: { Visible?: boolean }) {
-  // add sensor viable later.
   return (
     <svg viewBox="0 0 299 279" fill="none" xmlns="http://www.w3.org/2000/svg">
       <path
