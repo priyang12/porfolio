@@ -13,6 +13,7 @@ import Navbar from './Components/Navbar/Navbar';
 import '@priyang/react-component-lib/dist/global.css';
 import '@priyang/react-component-lib/dist/index.css';
 import './app.css';
+import NavigationLoading from './Components/NavigationLoading/NavigationLoading';
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -67,6 +68,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
       </head>
       <body>
         <Navbar />
+        <NavigationLoading />
         {children}
         <ScrollRestoration />
         <Scripts />
