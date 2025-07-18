@@ -3,7 +3,7 @@ import { GetAllBlogNames, GetBlog } from '~/Utils/mdx.server';
 import BlogCard from '~/Components/BlogComponents/BlogCard';
 import Filtering from '~/Components/BlogComponents/Filtering';
 import { Pagination, perPage } from '~/Components/BlogComponents/Pagination';
-import { filterBlogs } from '~/Utils/filter.client';
+import { filterBlogs } from '~/Utils/filter';
 
 import type { Route } from './+types/blogs';
 import Tags from '~/Components/BlogComponents/Tags';

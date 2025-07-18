@@ -40,7 +40,7 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
   }
 };
 
-const components = {
+const mdxComponents = {
   h1: (props: any) => (
     <h1 className="text-primary-500 text-4xl font-bold" {...props} />
   ),
@@ -121,7 +121,7 @@ export default function Project() {
       {/* MDX Content */}
       <article className="col-start-1 col-end-8 flex items-center gap-4 sm:col-start-2 sm:items-center sm:justify-between lg:col-end-12">
         <div>
-          <Component components={components} />
+          <Component components={mdxComponents} />
         </div>
       </article>
     </div>
