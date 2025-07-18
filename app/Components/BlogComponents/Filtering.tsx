@@ -5,17 +5,21 @@ import { useDeferredValue } from './useDeferredValue';
 
 function Filtering() {
   const [searchParams, setSearchParams] = useSearchParams();
-  const [query, setQuery] = useState(searchParams.get('q'));
+  const [query, setQuery] = useState(searchParams.get('q') ?? '');
 
   // need to fix the import in lib
   const Search = useDeferredValue({
     initialValue: searchParams.get('q'),
     originalState: query,
     delay: 500,
-    cb: (query) => {
-      if (query) {
-        const serialize = new URLSearchParams(`q=${query}`);
-        setSearchParams(serialize);
+    cb: (deferredQuery) => {
+      if (deferredQuery) {
+        const newParams = new URLSearchParams(searchParams);
+        newParams.set('q', query);
+        newParams.set('page', newParams.get('page') ?? '1');
+        setSearchParams(newParams);
+      } else {
+        setSearchParams('');
       }
     },
   });
@@ -28,6 +32,7 @@ function Filtering() {
           id="Search"
           InputSize="large"
           placeholder="Look up by Title or Tags"
+          value={query}
           onChange={(e) => setQuery(`${e.target.value}`)}
         />
       </FormControl>

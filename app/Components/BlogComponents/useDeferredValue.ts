@@ -36,8 +36,10 @@ export const useDeferredValue = <T>({
   React.useEffect(() => {
     let id: ReturnType<typeof setTimeout>;
     id = setTimeout(() => {
-      if (cb) cb(originalState);
-      setState(originalState);
+      if (initialValue !== originalState) {
+        if (cb) cb(originalState);
+        setState(originalState);
+      }
     }, delay);
     return () => {
       if (id) clearTimeout(id);

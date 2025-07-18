@@ -1,10 +1,11 @@
 import { useLoaderData, type MetaArgs } from 'react-router';
 import { GetAllBlogNames, GetBlog } from '~/Utils/mdx.server';
-import type { Route } from './+types/blogs';
 import BlogCard from '~/Components/BlogComponents/BlogCard';
 import Filtering from '~/Components/BlogComponents/Filtering';
-import { useState } from 'react';
+import { Pagination, perPage } from '~/Components/BlogComponents/Pagination';
 import { filterBlogs } from '~/Utils/filter.client';
+
+import type { Route } from './+types/blogs';
 
 export type blogPage = {
   code: string;
@@ -24,10 +25,13 @@ export type blogPage = {
     socialImagePreTitle?: string;
   };
 };
-export const meta = ({ data }: MetaArgs<typeof loader>) => {
+// fix meta data passing.
+export const meta = ({ data }: MetaArgs<typeof clientLoader>) => {
   return [
-    { title: '/Blogs : ' + data?.Blogs.length },
-    { name: 'description', content: data?.Blogs.length },
+    {
+      title: '/Blogs',
+    },
+    { name: 'description', content: data?.totalBlogs },
   ];
 };
 
@@ -38,31 +42,46 @@ export const loader = async ({}: Route.LoaderArgs) => {
     const { frontmatter } = await GetBlog<blogPage['frontmatter']>(blog);
     Blogs.push(frontmatter);
   }
-  return { Blogs };
+  return { Blogs, totalBlogs: Blogs.length };
 };
 // module-level cache (persists across navigation)
+// need to turn into singleton cache.
 let cachedBlogs: { Blogs: blogPage['frontmatter'][] } | null = null;
 
 export async function clientLoader({
   serverLoader,
   request,
-  params,
 }: Route.ClientLoaderArgs) {
   if (!cachedBlogs) {
     // call the server loader
-    // @ts-ignore
     cachedBlogs = await serverLoader();
   }
 
+  let blogs: blogPage['frontmatter'][] = cachedBlogs.Blogs;
   const url = new URL(request.url);
   const query = url.searchParams.get('q');
+  const page = url.searchParams.get('page');
 
   if (query) {
-    const filteredBlogs = filterBlogs(query, cachedBlogs.Blogs);
-    return { Blogs: filteredBlogs };
+    blogs = filterBlogs(query, cachedBlogs.Blogs);
   }
 
-  return cachedBlogs;
+  const filterBlogsLength = blogs.length;
+
+  if (page) {
+    // blogs
+    blogs = blogs.slice((Number(page) - 1) * perPage, Number(page) * perPage);
+  } else {
+    blogs = blogs.slice(0, perPage);
+  }
+
+  return {
+    page: page,
+    query: query,
+    Blogs: blogs,
+    paginationLength: Math.ceil(filterBlogsLength / perPage),
+    totalBlogs: cachedBlogs.Blogs,
+  };
 }
 
 // +--------------------------------------------------+
@@ -83,16 +102,21 @@ export async function clientLoader({
 // +-----------------------------+
 
 function blogs() {
-  const { Blogs } = useLoaderData<typeof loader>();
+  const {
+    Blogs: blogsData,
+    paginationLength,
+    page,
+  } = useLoaderData<typeof clientLoader>();
 
   return (
     <div className="grid min-h-screen grid-cols-1 p-5 sm:grid-cols-8 sm:p-0 lg:grid-cols-12">
       <main className="col-1 my-5 flex flex-col gap-5 sm:col-start-2 sm:col-end-8 lg:col-end-11">
         <h1 className="font-VT323 mb-5 text-4xl">My Blogs</h1>
         <Filtering />
-        {[...Blogs, ...Blogs, ...Blogs].map((item, index) => (
+        {blogsData.map((item, index) => (
           <BlogCard key={index} blogData={item} />
         ))}
+        <Pagination totalPages={paginationLength} />
       </main>
     </div>
   );

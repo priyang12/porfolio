@@ -8,20 +8,21 @@ import type { blogPage } from '~/routes/blogs/blogs';
 export const filterBlogs = (
   query: string,
   blogs: blogPage['frontmatter'][],
-) => {
-  const trimmedQuery = query.trim().toLowerCase();
+): blogPage['frontmatter'][] => {
+  // get names array
+  const queries = query
+    .split(',')
+    .map((q) => q.trim().toLowerCase())
+    .filter(Boolean); // remove empty strings
 
   return blogs.filter((item) => {
-    const titleMatch = item.title.toLowerCase().includes(trimmedQuery);
+    const title = item.title.toLowerCase();
+    const keywords = item.meta?.keywords?.map((k) => k.toLowerCase()) ?? [];
+    const categories = item.categories?.map((c) => c.toLowerCase()) ?? [];
 
-    const keywordMatch = item.meta?.keywords?.some(
-      (kw) => kw.toLowerCase() === trimmedQuery,
+    return queries.some(
+      (q) =>
+        title.includes(q) || keywords.includes(q) || categories.includes(q),
     );
-
-    const categoryMatch = item.categories?.some(
-      (cat) => cat.toLowerCase() === trimmedQuery,
-    );
-
-    return titleMatch || keywordMatch || categoryMatch;
   });
 };
