@@ -5,15 +5,16 @@ import {
   Outlet,
   Scripts,
   ScrollRestoration,
+  useFetcher,
 } from 'react-router';
 import { useEffect } from 'react';
-
 import type { Route } from './+types/root';
 import Navbar from './Components/Navbar/Navbar';
+import { Button, Truncate } from '@priyang/react-component-lib';
+import NavigationLoading from './Components/NavigationLoading/NavigationLoading';
 import '@priyang/react-component-lib/dist/global.css';
 import '@priyang/react-component-lib/dist/index.css';
 import './app.css';
-import NavigationLoading from './Components/NavigationLoading/NavigationLoading';
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -25,6 +26,11 @@ export const links: Route.LinksFunction = () => [
   {
     rel: 'stylesheet',
     href: 'https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap',
+  },
+  {
+    rel: 'preload',
+    as: 'image',
+    href: 'https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80',
   },
 ];
 
@@ -82,6 +88,7 @@ export default function App() {
 }
 
 export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
+  const fetcher = useFetcher();
   let message = 'Oops!';
   let details = 'An unexpected error occurred.';
   let stack: string | undefined;
@@ -98,14 +105,29 @@ export function ErrorBoundary({ error }: Route.ErrorBoundaryProps) {
   }
 
   return (
-    <main className="container mx-auto p-4 pt-16">
-      <h1>{message}</h1>
-      <p>{details}</p>
-      {stack && (
-        <pre className="w-full overflow-x-auto p-4">
-          <code>{stack}</code>
-        </pre>
-      )}
+    <main
+      className="flex min-h-screen flex-col"
+      style={{
+        background: `url("https://images.unsplash.com/photo-1579373903781-fd5c0c30c4cd?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2574&q=80")
+          repeat center/cover`,
+      }}
+    >
+      <div className="glass-container m-5 flex flex-col items-center pt-5">
+        <h1 className="text-4xl">{message}</h1>
+        <Truncate>{details}</Truncate>
+        {stack && (
+          <pre className="h-1/2 w-3/4 overflow-x-auto p-4">
+            <code>{stack}</code>
+          </pre>
+        )}
+        <Button
+          variant="info-border"
+          className="m-5"
+          onClick={() => fetcher.load(window.location.pathname)}
+        >
+          Reload Page
+        </Button>
+      </div>
     </main>
   );
 }
