@@ -6,6 +6,8 @@ import { Pagination, perPage } from '~/Components/BlogComponents/Pagination';
 import { filterBlogs } from '~/Utils/filter.client';
 
 import type { Route } from './+types/blogs';
+import Tags from '~/Components/BlogComponents/Tags';
+import { Divider } from '@priyang/react-component-lib';
 
 export type blogPage = {
   code: string;
@@ -101,6 +103,7 @@ export async function clientLoader({
 // | ◀ 1  2  3  ▶                |
 // +-----------------------------+
 
+const MemoTag = () => <Tags />;
 function blogs() {
   const {
     Blogs: blogsData,
@@ -112,7 +115,11 @@ function blogs() {
     <div className="grid min-h-screen grid-cols-1 p-5 sm:grid-cols-8 sm:p-0 lg:grid-cols-12">
       <main className="col-1 my-5 flex flex-col gap-5 sm:col-start-2 sm:col-end-8 lg:col-end-11">
         <h1 className="font-VT323 mb-5 text-4xl">My Blogs</h1>
-        <Filtering />
+        <div className="flex flex-col gap-5 md:flex-row">
+          <Filtering />
+          <Divider align="vertical" />
+          <MemoTag />
+        </div>
         {blogsData.map((item, index) => (
           <BlogCard key={index} blogData={item} />
         ))}

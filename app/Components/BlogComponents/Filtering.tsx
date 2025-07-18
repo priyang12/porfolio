@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FormControl, Input, Label } from '@priyang/react-component-lib';
 import { useSearchParams } from 'react-router';
 import { useDeferredValue } from './useDeferredValue';
@@ -6,6 +6,10 @@ import { useDeferredValue } from './useDeferredValue';
 function Filtering() {
   const [searchParams, setSearchParams] = useSearchParams();
   const [query, setQuery] = useState(searchParams.get('q') ?? '');
+
+  useEffect(() => {
+    setQuery(searchParams.get('q') ?? '');
+  }, [searchParams]);
 
   // need to fix the import in lib
   const Search = useDeferredValue({
@@ -26,8 +30,11 @@ function Filtering() {
 
   return (
     <div>
-      <FormControl required={false}>
-        <Label htmlFor="Search">Search Blog : {Search}</Label>
+      {Search ? (
+        <h2 className="text-primary-500 py-5 text-xl">Result : {Search}</h2>
+      ) : null}
+      <FormControl className="flex items-center gap-4" required={false}>
+        <Label htmlFor="Search">Search Blog :</Label>
         <Input
           id="Search"
           InputSize="large"

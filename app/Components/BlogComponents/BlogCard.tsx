@@ -1,4 +1,5 @@
 import { Button, Ring, Tag, Truncate } from '@priyang/react-component-lib';
+import { Link, useNavigate } from 'react-router';
 import type { blogPage } from '~/routes/blogs/blogs';
 
 // +-----------------------------+
@@ -10,6 +11,18 @@ import type { blogPage } from '~/routes/blogs/blogs';
 // +-----------------------------+
 
 function BlogCard({ blogData }: { blogData: blogPage['frontmatter'] }) {
+  const navigate = useNavigate();
+
+  const goToBlog = (e: React.BaseSyntheticEvent) => {
+    if ('key' in e) {
+      if (e.key === 'Enter') {
+        navigate(`/blogs/${blogData.title}`);
+      }
+    } else {
+      navigate(`/blogs/${blogData.title}`);
+    }
+  };
+
   return (
     <article className="bg-bg-surface blogCard rounded-lg border p-6 shadow-md transition-shadow duration-300 hover:shadow-lg xl:grid">
       {/* Cover image */}
@@ -57,7 +70,14 @@ function BlogCard({ blogData }: { blogData: blogPage['frontmatter'] }) {
           </time>
         )}
         <Ring ringColor="var(--primary-300)" className="rounded-xl">
-          <Button className="bg-primary-800">Read More</Button>
+          <Button
+            role="link"
+            onClick={goToBlog}
+            onKeyDown={goToBlog}
+            className="bg-primary-800"
+          >
+            Read More
+          </Button>
         </Ring>
       </div>
     </article>
