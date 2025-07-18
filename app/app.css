@@ -111,6 +111,10 @@
   --color-neutral-700: #334155;
   --color-neutral-800: #1e293b;
   --color-neutral-900: #0f172a;
+
+  --color-bg-default: #0f172a;
+  --color-bg-surface: #1e293b;
+  --color-bg-contrast: #f8fafc;
 }
 
 html,
@@ -149,4 +153,26 @@ body {
   @apply p-5;
   background-color: var(--bg-surface);
   color: var(--text-primary);
+}
+
+.blogCard {
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas:
+    'image title'
+    'image preview'
+    'image tags';
+  gap: 1rem;
+}
+
+.image {
+  grid-area: image;
+}
+.title {
+  grid-area: title;
+}
+.preview {
+  grid-area: preview;
+}
+.tags {
+  grid-area: tags;
 }
