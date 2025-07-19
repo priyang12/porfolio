@@ -1,15 +1,7 @@
 import { Link, useNavigate } from 'react-router';
 import { FiExternalLink, FiGithub } from 'react-icons/fi';
 import { Truncate } from '@priyang/react-component-lib';
-
-export type projectProps = {
-  Title: string;
-  Description: string;
-  TechName: string;
-  GithubLink: string;
-  ProjectLink: string;
-  Image: string;
-};
+import type { projectProps } from '~/routes/projects/projects';
 
 const ProjectCard = ({
   Project,
