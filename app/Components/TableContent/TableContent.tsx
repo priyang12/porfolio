@@ -4,6 +4,7 @@ import clsx from 'clsx';
 
 function TableContent({
   className,
+  children,
   ...props
 }: React.ComponentPropsWithoutRef<'ul'>) {
   const { headings } = useHeadings();
@@ -15,10 +16,11 @@ function TableContent({
       )}
       {...props}
     >
+      <h1 className="text-accent-600 text-2xl">Sections</h1>
       {headings.length > 0 &&
         headings.map((heading) => (
           <li
-            className="md:my-1 md:text-xl"
+            className="text-primary-300 md:my-1 md:text-xl"
             key={heading.id}
             style={{
               marginLeft: `${heading.level - 2}em`,
@@ -27,6 +29,7 @@ function TableContent({
             <a href={`#${heading.id}`}>{heading.text}</a>
           </li>
         ))}
+      {children}
     </ul>
   );
 }

@@ -9,6 +9,7 @@ import type { Route } from './+types/singleBlog';
 import type { blogPage } from './blogs';
 import type { MDXComponents } from 'mdx/types';
 import TableContent from '~/Components/TableContent/TableContent';
+import LinksInPage from '~/Components/LinksInPage/LinksInPage';
 
 export const meta = ({ data }: MetaArgs<typeof loader>) => {
   // @ts-ignore
@@ -114,7 +115,7 @@ function singleBlog() {
       className="grid min-h-screen grid-cols-4 p-5 md:grid-cols-12"
       id="Blog"
     >
-      <figure className="col-start-3 col-end-8">
+      <figure className="col-start-3 col-end-7">
         <img
           src={frontmatter.ImageURL}
           loading="lazy"
@@ -122,17 +123,23 @@ function singleBlog() {
           className="rounded-xl"
         />
       </figure>
-      <div className="col-start-8 col-end-11 ml-5 flex h-full flex-col">
-        <h1 className="text-primary text-6xl font-bold">{frontmatter.title}</h1>
+      <div className="col-start-8 col-end-11 flex h-full flex-col sm:ml-5">
+        <h1 className="text-primary line-he text-6xl font-bold">
+          {frontmatter.title}
+        </h1>
         <h2 className="mt-10 text-2xl">
           Total <br /> Read Time :
           <span className="text-primary-200 font-bold">{totalTime} Mins</span>
         </h2>
       </div>
-      <TableContent className="col-span-12 p-5 sm:col-span-2 sm:col-start-11 sm:row-start-2" />
-      <article className="col-start-3 col-end-11 mt-5">
+      <TableContent className="col-span-12 p-5 sm:col-span-2 sm:col-start-11 sm:row-start-2"></TableContent>
+      <article className="col-start-2 col-end-12 mt-5 md:col-end-10">
         <Component components={mdxComponents} />
       </article>
+      <LinksInPage
+        elementID="Blog"
+        className="bg-bg-surface col-start-2 col-end-11 rounded-xl p-5"
+      />
     </div>
   );
 }
