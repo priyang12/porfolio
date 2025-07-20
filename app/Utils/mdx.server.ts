@@ -1,7 +1,7 @@
 import { readdirSync } from 'fs';
 import { bundleMDX } from 'mdx-bundler';
 import rehypeSlug from 'rehype-slug';
-import rehypePrism from 'rehype-prism-plus';
+import remarkPrism from 'remark-prism';
 import path from 'path';
 import { cache } from './cache.server';
 
@@ -77,7 +77,7 @@ export const GetBlog = async <T extends { [key: string]: unknown }>(
     cwd: process.cwd(),
     mdxOptions(options, frontmatter) {
       options.rehypePlugins = [...(options.rehypePlugins ?? []), rehypeSlug];
-      options.remarkPlugins = [...(options.remarkPlugins ?? []), rehypePrism];
+      options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkPrism];
       return options;
     },
   });

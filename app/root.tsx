@@ -14,6 +14,7 @@ import { Button, Truncate } from '@priyang/react-component-lib';
 import NavigationLoading from './Components/NavigationLoading/NavigationLoading';
 import '@priyang/react-component-lib/dist/global.css';
 import '@priyang/react-component-lib/dist/index.css';
+import './prism.css';
 import './app.css';
 
 export const links: Route.LinksFunction = () => [
