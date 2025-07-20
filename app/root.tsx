@@ -16,6 +16,7 @@ import '@priyang/react-component-lib/dist/global.css';
 import '@priyang/react-component-lib/dist/index.css';
 import './prism.css';
 import './app.css';
+import Footer from './Components/Footer/Footer';
 
 export const links: Route.LinksFunction = () => [
   { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
@@ -79,6 +80,7 @@ export function Layout({ children }: { children: React.ReactNode }) {
         {children}
         <ScrollRestoration />
         <Scripts />
+        <Footer />
       </body>
     </html>
   );
