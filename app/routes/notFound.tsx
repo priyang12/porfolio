@@ -1,3 +1,4 @@
+import { Button } from '@priyang/react-component-lib';
 import { Link, useRouteError } from 'react-router';
 
 const NotFoundSvg = (props: React.ComponentPropsWithoutRef<'svg'>) => (
@@ -16,7 +17,7 @@ const NotFoundSvg = (props: React.ComponentPropsWithoutRef<'svg'>) => (
 
 function NotFound(_: React.ComponentPropsWithoutRef<'div'>) {
   return (
-    <div className="bg-primary-500 text-bg-contrast m-5 mx-auto flex max-w-3xl flex-col items-center justify-center gap-6 px-6 py-12 text-center shadow-xl sm:rounded-3xl md:px-12 lg:px-24">
+    <div className="bg-primary-500 text-bg-contrast m-5 mx-auto flex min-h-[80vh] max-w-3xl flex-col items-center justify-center gap-6 px-6 py-12 text-center shadow-xl sm:rounded-3xl md:px-12 lg:px-24">
       <p className="text-2xl font-semibold tracking-tight sm:text-3xl">
         Oh no! You found a page that's missing stuff.
       </p>
@@ -25,10 +26,10 @@ function NotFound(_: React.ComponentPropsWithoutRef<'div'>) {
         <NotFoundSvg />
       </div>
 
-      <Link to="/FunZone">
-        <button className="bg-bg-contrast text-primary-500 mt-4 rounded-xl px-6 py-3 text-lg font-semibold shadow-md transition duration-200 hover:bg-white">
+      <Link to="/Games">
+        <Button className="bg-bg-contrast text-primary-500 mt-4 rounded-xl px-6 py-3 text-lg font-semibold shadow-md transition duration-200 hover:bg-white">
           Want to Play Some Games?
-        </button>
+        </Button>
       </Link>
     </div>
   );

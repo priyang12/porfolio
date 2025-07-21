@@ -8,9 +8,13 @@ export default [
   route('projects/:id', './routes/projects/singleproject.tsx'),
   route('blogs', './routes/blogs/blogs.tsx'),
   route('blogs/:title', './routes/blogs/singleBlog.tsx'),
+  route('Games', './routes/Games/playground.tsx'),
+  route('Games/snakeBite', './routes/Games/snakeBite.tsx'),
+  route('*', './routes/notFound.tsx'),
+
+  // resources
   route('/robots.txt', './resources/robots[.]txt.tsx'),
   route('/sitemap.xml', './resources/sitemap[.]xml.tsx'),
   route('/VideoSitemmap.xml', './resources/VideoSitemmap[.]xml.tsx'),
   route('/imageSitemmap.xml', './resources/imageSitemmap[.]xml.tsx'),
-  route('*', './routes/notFound.tsx'),
 ] satisfies RouteConfig;

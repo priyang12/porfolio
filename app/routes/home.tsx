@@ -113,12 +113,12 @@ const HighlightsPanel = () => {
   ];
 
   return (
-    <section className="col-start-2 col-end-12 min-h-[100vh] w-full overflow-scroll">
+    <section className="col-start-2 col-end-12 min-h-[100vh] w-full">
       <div className="grid grid-cols-1 gap-6 px-4 py-8 sm:grid-cols-2 lg:translate-y-1/3 lg:grid-cols-3">
         {sections.map((section, i) => (
           <div
             key={i}
-            className="bg-bg-surface text-text-primary relative h-full rounded-xl border border-neutral-800 p-6 shadow-md transition-shadow hover:shadow-lg"
+            className="bg-bg-surface text-text-primary relative h-full rounded-xl border-2 border-solid border-neutral-200 p-6 shadow-md transition-shadow hover:shadow-lg"
           >
             <img
               src={section.img.src}
