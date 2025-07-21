@@ -5,6 +5,7 @@
 
 :root {
   /* override lib styles. */
+  --text-primary: #fff;
 
   --error-color: #ef4444;
   --success-color: #10b981;
@@ -42,9 +43,13 @@
   --neutral-800: #1e293b;
   --neutral-900: #0f172a;
 
-  --bg-default: #ffffff;
+  /* for light mode */
+  /* --bg-default: #ffffff;
   --bg-surface: #f8fafc;
-  --bg-contrast: #0f172a;
+  --bg-contrast: #0f172a; */
+  --bg-default: #0f172a;
+  --bg-surface: #1e293b;
+  --bg-contrast: #f8fafc;
 }
 
 /* dark theme */
@@ -59,9 +64,9 @@
   --primary-600: #5eead4;
   --primary-700: #99f6e4;
   --primary-800: #ccfbf1;
-  --primary-900: #f0fdfa; */
+  --primary-900: #f0fdfa;
 
-  /* --neutral-50: #0f172a;
+  --neutral-50: #0f172a;
   --neutral-100: #1e293b;
   --neutral-200: #334155;
   --neutral-300: #475569;
