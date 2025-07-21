@@ -69,7 +69,12 @@ function BlogCard({ blogData }: { blogData: blogPage['frontmatter'] }) {
             })}
           </time>
         )}
-        <Ring ringColor="var(--primary-300)" className="rounded-xl">
+        <Ring
+          // fixed in newer version.
+          ringColor="var(--primary-300)"
+          className="rounded-xl"
+          asChild={true}
+        >
           <Button
             role="link"
             onClick={goToBlog}
