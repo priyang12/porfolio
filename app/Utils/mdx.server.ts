@@ -61,6 +61,29 @@ export const GetAllBlogNames = () => {
 };
 
 // return individual blog mdx parse.
+export const GetNowBlog = async <T extends { [key: string]: unknown }>() => {
+  const cacheKey = `now`;
+  const cached = cache.get<{ frontmatter: T; code: string }>(cacheKey);
+
+  if (cached) {
+    return cached;
+  }
+
+  const _dirname = path.resolve();
+  const { frontmatter, code } = await bundleMDX<T>({
+    file: _dirname + '/content/Personal/currently.md',
+    cwd: process.cwd(),
+    mdxOptions(options, frontmatter) {
+      options.rehypePlugins = [...(options.rehypePlugins ?? []), rehypeSlug];
+      options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkPrism];
+      return options;
+    },
+  });
+
+  const result = { frontmatter, code };
+  cache.set(cacheKey, result);
+  return result;
+};
 export const GetBlog = async <T extends { [key: string]: unknown }>(
   name: string,
 ) => {
