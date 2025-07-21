@@ -1,11 +1,17 @@
 import type { Route } from './+types/home';
-import { Description, Subtitle, Title } from '../../content/Hero.json';
-import { Github, Twitter } from '../../content/Socials.json';
 import { FiGithub, FiTwitter } from 'react-icons/fi';
-import { ButtonGroup, TextLink } from '@priyang/react-component-lib';
+import { ButtonGroup, TextLink, Truncate } from '@priyang/react-component-lib';
 import { Link } from 'react-router';
 import { FaToolbox } from 'react-icons/fa';
 import { BiNotepad, BiSearch } from 'react-icons/bi';
+
+import { Description, Subtitle, Title } from '../../content/Hero.json';
+import { Github, Twitter } from '../../content/Socials.json';
+import {
+  project as latestProject,
+  blog as latestBlog,
+  currently,
+} from '../../content/latest.json';
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -91,62 +97,46 @@ const HighlightsPanel = () => {
   const sections = [
     {
       icon: <FaToolbox />,
-      img: {
-        src: 'https://picsum.photos/600/400?image=1080',
-        alt: 'Project code screenshot',
-      },
-      title: 'Latest Project',
-      heading: 'Design System Builder',
-      description:
-        'A Figma-like tool to visually build your own Tailwind design system. ',
       action: 'View Project →',
-      link: '/projects/latest',
+      ...latestProject,
     },
     {
       icon: <BiNotepad />,
-      img: {
-        src: 'https://picsum.photos/600/400?image=1081',
-        alt: 'Blog workspace',
-      },
-      title: 'Latest Blog',
-      heading: 'How I Migrated to Vite',
-      description:
-        'A breakdown of switching from CRA to Vite for blazing-fast dev experience. A breakdown of switching from CRA to Vite for blazing-fast dev experience.',
       action: 'Read More →',
-      link: '/blog/latest',
+      ...latestBlog,
     },
     {
       icon: <BiSearch />,
-      img: {
-        src: 'https://picsum.photos/600/400?image=1082',
-        alt: 'Learning Image',
-      },
-      title: 'Currently...',
-      heading: 'Exploring Astro',
-      description:
-        'Learning how Astro combines performance and developer experience.',
       action: 'More →',
-      link: '/now',
+      ...currently,
     },
   ];
 
   return (
-    <section className="col-start-2 col-end-12 min-h-[100vh] w-full">
-      <div className="grid gap-6 px-4 py-8 sm:translate-y-1/3 md:grid-cols-3">
+    <section className="col-start-2 col-end-12 min-h-[100vh] w-full overflow-scroll">
+      <div className="grid grid-cols-1 gap-6 px-4 py-8 sm:grid-cols-2 lg:translate-y-1/3 lg:grid-cols-3">
         {sections.map((section, i) => (
           <div
             key={i}
             className="bg-bg-surface text-text-primary relative h-full rounded-xl border border-neutral-800 p-6 shadow-md transition-shadow hover:shadow-lg"
           >
-            <img src={section.img.src} alt={section.img.alt} />
-            <div className="mb-2 flex items-center gap-2 text-xl font-medium">
+            <img
+              src={section.img.src}
+              className="w-full sm:h-1/2"
+              alt={section.img.alt}
+            />
+            <div className="mb-2 flex items-center gap-2 py-5 text-xl font-medium">
               <span className="text-2xl">{section.icon}</span>
               {section.title}
             </div>
             <h3 className="mb-1 text-lg font-semibold">{section.heading}</h3>
-            <p className="text-text-secondary mb-4 text-sm">
+            <Truncate
+              as="p"
+              lines={3}
+              className="text-text-secondary mb-4 text-sm"
+            >
               {section.description}
-            </p>
+            </Truncate>
             <a
               href={section.link}
               className="text-text-link absolute right-10 bottom-10 inline-block text-sm font-medium hover:underline"

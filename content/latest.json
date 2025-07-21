@@ -1,0 +1,32 @@
+{
+  "project": {
+    "img": {
+      "src": "https://ik.imagekit.io/5aalo5l7bu7/Portfolio/ReactComponentLib.png?ik-sdk-version=javascript-1.4.3&updatedAt=1675114083291",
+      "alt": "Priyang Component Lib Screen Shot"
+    },
+    "title": "Latest Project",
+    "heading": "Priyang Component Lib",
+    "description": "It's a React Component Lib that follows Atomic Design Pattern to build UIs.",
+    "link": "/projects/ReactLib.md"
+  },
+  "blog": {
+    "img": {
+      "src": "https://picsum.photos/600/400?image=1074",
+      "alt": "CSS Postions Screen Shot"
+    },
+    "title": "Latest Blog",
+    "heading": "CSS Postions",
+    "description": "It's a Blog about how CSS Postions Works.",
+    "link": "/blogs/CSS-Postion.mdx"
+  },
+  "currently": {
+    "img": {
+      "src": "https://picsum.photos/600/400?image=1070",
+      "alt": "Background Properties Screen Shot"
+    },
+    "title": "Currently...",
+    "heading": "Background Properties",
+    "description": "It's a Blog about how to use Background Properties.",
+    "link": "/currently"
+  }
+}

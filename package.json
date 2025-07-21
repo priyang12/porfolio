@@ -3,10 +3,11 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "build": "react-router build",
+    "build": "yarn generateLatest && react-router build",
     "dev": "react-router dev",
     "start": "react-router-serve ./build/server/index.js",
-    "typecheck": "react-router typegen && tsc"
+    "typecheck": "react-router typegen && tsc",
+    "generateLatest": "tsx content/Scripts/generateLatest.ts"
   },
   "dependencies": {
     "@priyang/react-component-lib": "^3.0.2",
