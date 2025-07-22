@@ -71,18 +71,21 @@ function HeroContainer() {
         <ButtonGroup className="mt-8 hidden justify-center border-0 sm:flex">
           <Link
             to={'/projects'}
+            reloadDocument
             className="Button Button-primary w-[26%] bg-[var(--primary-800)]"
           >
             <>View Projects</>
           </Link>
           <Link
             to={'/blogs'}
+            reloadDocument
             className="Button Button-primary w-[26%] bg-[var(--primary-800)]"
           >
             Read Blogs
           </Link>
           <Link
             to={'/about'}
+            reloadDocument
             className="Button Button-primary w-[26%] bg-[var(--primary-800)]"
           >
             About Me
