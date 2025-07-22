@@ -30,6 +30,11 @@ function BlogCard({ blogData }: { blogData: blogPage['frontmatter'] }) {
         src={blogData.ImageURL}
         alt={blogData.title + 'Cover Image'}
         className="image rounded-2xl"
+        // this is same ratio as img src of picsum.
+        // later switch with lib component on newer version.
+        width="600"
+        height="400"
+        loading="lazy"
       />
       {/* Title */}
       <h1 className="text-primary-300 title mb-2 text-2xl font-semibold">

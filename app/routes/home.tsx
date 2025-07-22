@@ -125,8 +125,11 @@ const HighlightsPanel = () => {
           >
             <img
               src={section.img.src}
-              className="w-full sm:h-1/2"
               alt={section.img.alt}
+              className="w-full sm:h-1/2"
+              width="600"
+              height="400"
+              loading="lazy"
             />
             <div className="mb-2 flex items-center gap-2 py-5 text-xl font-medium">
               <span className="text-2xl">{section.icon}</span>
