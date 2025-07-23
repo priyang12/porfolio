@@ -5,6 +5,7 @@ import { getMDXComponent } from 'mdx-bundler/client';
 import { FiExternalLink, FiGithub } from 'react-icons/fi';
 import { TextLink } from '@priyang/react-component-lib';
 import { GetProject } from '~/Utils/mdx.server';
+import { tableComponents } from '~/Components/MDXComponents/tableComponent';
 
 export type LoaderData = {
   Title: string;
@@ -45,7 +46,10 @@ const mdxComponents = {
     <h1 className="text-primary-500 text-4xl font-bold" {...props} />
   ),
   h2: (props: any) => (
-    <h1 className="text-primary-300 text-4xl font-bold" {...props} />
+    <h1 className="text-primary-400 text-3xl font-bold" {...props} />
+  ),
+  h3: (props: any) => (
+    <h1 className="text-primary-300 text-xl font-bold" {...props} />
   ),
   p: (props: any) => (
     <p className="my-4 text-base leading-relaxed text-neutral-300" {...props} />
@@ -55,14 +59,14 @@ const mdxComponents = {
   ),
   a: (props: any) => <a className="text-blue-600 hover:underline" {...props} />,
   ul: (props: any) => (
-    <ul
-      className="list-inside list-disc space-y-2 pl-5 text-neutral-100"
-      {...props}
-    />
+    <ul className="list-inside space-y-2 text-neutral-100" {...props} />
   ),
   li: (props: any) => (
-    <li className="ml-4 text-base leading-relaxed" {...props} />
+    <li className="ml-5 text-base leading-relaxed" {...props} />
   ),
+  hr: (props: any) => <hr className="my-5" {...props} />,
+  strong: (props: any) => <strong className="text-accent-400" {...props} />,
+  ...tableComponents,
 };
 
 export default function Project() {
@@ -106,14 +110,14 @@ export default function Project() {
 
       {/* Client Link Section */}
       <div className="col-span-12 my-5 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-        <h2 className="text-2xl font-semibold">Client Side</h2>
+        <h2 className="text-2xl font-semibold">Deployment</h2>
         <TextLink
           href={frontmatter.ProjectLink}
           target="_blank"
           rel="noreferrer"
           className="flex items-center gap-2 hover:text-white"
         >
-          <span>Client Link</span>
+          <span>Link</span>
           <FiExternalLink />
         </TextLink>
       </div>

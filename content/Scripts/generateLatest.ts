@@ -71,7 +71,7 @@ async function main() {
       title: 'Latest Project',
       heading: latestProject.Title,
       description: latestProject.Description,
-      link: `/projects/${latestProject.Filename}`,
+      link: `/projects/${latestProject.Filename.substring(0, latestProject.Filename.indexOf('.'))}`,
     },
     blog: {
       img: {
@@ -81,7 +81,7 @@ async function main() {
       title: 'Latest Blog',
       heading: latestBlog.title,
       description: latestBlog.description,
-      link: `/blogs/${latestBlog.FileName}`,
+      link: `/blogs/${latestBlog.FileName.substring(0, latestProject.Filename.indexOf('.'))}`,
     },
     currently: {
       img: {

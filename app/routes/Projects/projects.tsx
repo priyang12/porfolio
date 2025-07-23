@@ -40,7 +40,14 @@ export async function loader({}: Route.LoaderArgs) {
 export type sortState = 'ascending' | 'descending' | 'none';
 const useProjectsData = () => {
   const { Projects } = useLoaderData<typeof loader>();
-  const [projects, setProjects] = useState(Projects);
+  const [projects, setProjects] = useState(
+    [...Projects].sort((a, b) => {
+      // descending by default
+      const aDate = new Date(a.Data.Date).getTime();
+      const bDate = new Date(b.Data.Date).getTime();
+      return bDate - aDate;
+    }),
+  );
 
   const filterList = useCallback(
     (name: string) => {

@@ -58,7 +58,7 @@ function Filter({
   filterList: any;
   sortProjects: any;
 }) {
-  const [sortSelection, setSortSelection] = useState<sortState>('none');
+  const [sortSelection, setSortSelection] = useState<sortState>('descending');
 
   const setSort = (e: React.BaseSyntheticEvent) => {
     const nextSort = e.currentTarget.getAttribute('data-sort') as sortState;

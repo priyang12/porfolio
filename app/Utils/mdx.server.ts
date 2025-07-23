@@ -2,6 +2,7 @@ import { readdirSync } from 'fs';
 import { bundleMDX } from 'mdx-bundler';
 import rehypeSlug from 'rehype-slug';
 import remarkPrism from 'remark-prism';
+import remarkGfm from 'remark-gfm';
 import path from 'path';
 import { cache } from './cache.server';
 
@@ -35,6 +36,7 @@ export const GetProject = async <T extends { [key: string]: unknown }>(
     cwd: process.cwd(),
     mdxOptions(options, frontmatter) {
       options.rehypePlugins = [...(options.rehypePlugins ?? []), rehypeSlug];
+      options.remarkPlugins = [...(options.remarkPlugins ?? []), remarkGfm];
       return options;
     },
   });

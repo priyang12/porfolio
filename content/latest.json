@@ -7,7 +7,7 @@
     "title": "Latest Project",
     "heading": "Priyang Component Lib",
     "description": "It's a React Component Lib that follows Atomic Design Pattern to build UIs.",
-    "link": "/projects/ReactLib.md"
+    "link": "/projects/ReactLib"
   },
   "blog": {
     "img": {
@@ -17,7 +17,7 @@
     "title": "Latest Blog",
     "heading": "CSS Postions",
     "description": "It's a Blog about how CSS Postions Works.",
-    "link": "/blogs/CSS-Postion.mdx"
+    "link": "/blogs/CSS-Postion"
   },
   "currently": {
     "img": {
