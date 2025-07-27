@@ -33,7 +33,7 @@ export const loader = async ({ params }: Route.LoaderArgs) => {
 
   if (!id) return redirect('/projects');
   try {
-    const { code, frontmatter } = await GetProject<LoaderData>(`${id}.md`);
+    const { code, frontmatter } = await GetProject<LoaderData>(`${id}.mdx`);
 
     return { frontmatter, code };
   } catch (error) {
