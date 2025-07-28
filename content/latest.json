@@ -1,12 +1,12 @@
 {
   "project": {
     "img": {
-      "src": "https://ik.imagekit.io/5aalo5l7bu7/Portfolio/ReactComponentLib.png?ik-sdk-version=javascript-1.4.3&updatedAt=1675114083291",
-      "alt": "Priyang Component Lib Screen Shot"
+      "src": "https://ik.imagekit.io/5aalo5l7bu7/Portfolio/react-lib-screen-shot_OIHf2gQ2G.png?updatedAt=1753603179424",
+      "alt": "React Component Library Screen Shot"
     },
     "title": "Latest Project",
-    "heading": "Priyang Component Lib",
-    "description": "It's a React Component Lib that follows Atomic Design Pattern to build UIs.",
+    "heading": "React Component Library",
+    "description": "It's a React Component Lib that Component-Driven Development creating UI and some hook for styless components.",
     "link": "/projects/ReactLib"
   },
   "blog": {
@@ -17,16 +17,16 @@
     "title": "Latest Blog",
     "heading": "CSS Postions",
     "description": "It's a Blog about how CSS Postions Works.",
-    "link": "/blogs/CSS-Postion"
+    "link": "/blogs/CSS-Postion.mdx"
   },
   "currently": {
     "img": {
       "src": "https://picsum.photos/600/400?image=1070",
-      "alt": "Background Properties Screen Shot"
+      "alt": "Cover Image"
     },
     "title": "Currently...",
-    "heading": "Background Properties",
-    "description": "It's a Blog about how to use Background Properties.",
+    "heading": "Currently...",
+    "description": "Keep Learning and looking for a job.",
     "link": "/currently"
   }
 }

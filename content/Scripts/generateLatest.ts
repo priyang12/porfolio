@@ -81,12 +81,12 @@ async function main() {
       title: 'Latest Blog',
       heading: latestBlog.title,
       description: latestBlog.description,
-      link: `/blogs/${latestBlog.FileName.substring(0, latestProject.Filename.indexOf('.'))}`,
+      link: `/blogs/${latestBlog.FileName}`,
     },
     currently: {
       img: {
         src: currently.ImageURL,
-        alt: currently.title + ' Screen Shot',
+        alt: 'Cover Image',
       },
       title: 'Currently...',
       heading: currently.title,

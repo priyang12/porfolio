@@ -116,7 +116,7 @@ const HighlightsPanel = () => {
   ];
 
   return (
-    <section className="col-start-2 col-end-12 min-h-[100vh] w-full">
+    <section className="col-start-2 col-end-12 min-h-[100vh] w-full pb-15 sm:pb-0">
       <div className="grid grid-cols-1 gap-6 px-4 py-8 sm:grid-cols-2 lg:translate-y-1/3 lg:grid-cols-3">
         {sections.map((section, i) => (
           <div
@@ -138,14 +138,14 @@ const HighlightsPanel = () => {
             <h3 className="mb-1 text-lg font-semibold">{section.heading}</h3>
             <Truncate
               as="p"
-              lines={3}
+              lines={2}
               className="text-text-secondary mb-4 text-sm"
             >
               {section.description}
             </Truncate>
             <a
               href={section.link}
-              className="text-text-link absolute right-10 bottom-10 inline-block text-sm font-medium hover:underline"
+              className="text-text-link absolute right-10 bottom-5 inline-block text-sm font-medium hover:underline"
             >
               {section.action}
             </a>

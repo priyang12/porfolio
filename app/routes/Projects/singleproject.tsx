@@ -18,14 +18,14 @@ export type LoaderData = {
   Video: string;
 };
 
-export const meta = ({ data }: MetaArgs<typeof loader>) => {
-  // @ts-ignore
-  const { frontmatter } = data;
-
-  return [
-    { title: '/' + frontmatter.Title },
-    { name: 'description', content: frontmatter.Description },
-  ];
+export const meta = ({ data }: Route.MetaArgs) => {
+  if (data) {
+    const { frontmatter } = data;
+    return [
+      { title: '/' + frontmatter.Title },
+      { name: 'description', content: frontmatter.Description },
+    ];
+  }
 };
 
 export const loader = async ({ params }: Route.LoaderArgs) => {
@@ -55,7 +55,10 @@ const mdxComponents = {
     <p className="my-4 text-base leading-relaxed text-neutral-300" {...props} />
   ),
   code: (props: any) => (
-    <code className="rounded bg-gray-100 px-2 py-1 text-sm" {...props} />
+    <code
+      className="text-primary-50 border-accent-500 rounded border-2 border-solid bg-[#5fc3b466] px-2 py-1 text-sm"
+      {...props}
+    />
   ),
   a: (props: any) => <a className="text-blue-600 hover:underline" {...props} />,
   ul: (props: any) => (
@@ -98,10 +101,10 @@ export default function Project() {
       {/* Video Preview */}
       <div className="col-start-1 col-end-8 flex items-center gap-4 sm:col-start-2 sm:items-center sm:justify-between lg:col-end-12">
         <video
-          className="w-full max-w-5xl rounded-xl shadow-lg"
+          preload="auto"
+          className="w-full max-w-5xl rounded-sm shadow-lg"
           poster={frontmatter.Image}
           controls
-          preload="none"
         >
           <source src={frontmatter.Video} />
           Your browser does not support the <code>&lt;video&gt;</code> tag.
